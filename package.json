@@ -2,6 +2,12 @@
   "name": "spoonflower",
   "version": "1.0.1",
   "dependencies": {
+  },
+  "scripts": {
+    "test": "gulp test",
+    "start": "gulp default"
+  },
+  "devDependencies": {
     "gulp": "~3.9.0",
     "gulp-load-plugins": "~0.10.0",
     "gulp-size": "~2.0.0",
@@ -48,11 +54,6 @@
     "uglify-save-license": "~0.4.1",
     "browser-sync-spa": "~1.0.3"
   },
-  "scripts": {
-    "test": "gulp test",
-    "start": "gulp default"
-  },
-  "devDependencies": {},
   "engines": {
     "node": ">=0.10.0"
   }
