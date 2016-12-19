@@ -18,13 +18,6 @@
     "gulp-sourcemaps": "~1.6.0",
     "gulp-less": "~3.0.3",
     "browser-sync": "~2.9.11",
-    "browser-sync-spa": "~1.0.3"
-  },
-  "scripts": {
-    "test": "gulp test",
-    "start": "gulp default"
-  },
-  "devDependencies": {
     "estraverse": "~4.1.0",
     "gulp-autoprefixer": "~3.0.2",
     "gulp-angular-templatecache": "~1.8.0",
@@ -52,8 +45,14 @@
     "karma-ng-html2js-preprocessor": "~0.2.0",
     "http-proxy-middleware": "~0.9.0",
     "chalk": "~1.1.1",
-    "uglify-save-license": "~0.4.1"
+    "uglify-save-license": "~0.4.1",
+    "browser-sync-spa": "~1.0.3"
   },
+  "scripts": {
+    "test": "gulp test",
+    "start": "gulp default"
+  },
+  "devDependencies": {},
   "engines": {
     "node": ">=0.10.0"
   }
