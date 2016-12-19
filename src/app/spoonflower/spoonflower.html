@@ -1,0 +1,84 @@
+<div class="container full-width" id="background">
+  <div class="acme-nav">
+    <acme-navbar creation-date="ctrl.creationDate"></acme-navbar>
+  </div>
+  <div class="container">
+    <div class="jumbotron text-center" ng-style="{'background': ctrl.showJumbotron === true ? '#eeeeee' : 'transparent' }">
+       <label style="position:absolute; top:5px;right:5px;" ng-click="ctrl.showJumbotron=!ctrl.showJumbotron">
+        <span ng-show="ctrl.showJumbotron"
+              class="glyphicon glyphicon-remove">
+        </span>
+        <span ng-hide="ctrl.showJumbotron"
+              class="glyphicon glyphicon-plus">
+        </span>
+      </label>
+      <div class="pull-right">
+        <small>
+          <label ng-click="ctrl.limit=20;">
+            <a ng-class="{'text-danger': ctrl.limit === 20 }">20</a></label> |
+          <label ng-click="ctrl.limit=48;">
+            <a ng-class="{'text-danger': ctrl.limit === 48 }">48</a></label> |
+          <label ng-click="ctrl.limit=200;">
+            <a ng-class="{'text-danger': ctrl.limit===200}">200</a></label>
+        </small>
+      </div>
+      <br><br>
+      <div class="input-group">
+        <input type="text"
+               class="form-control"
+               ng-model="ctrl.searchQ"
+               placeholder="Show me some..."
+               ng-keypress="($event.which === 13 ? ctrl.search() : 0)"/>
+
+          <div class="input-group-btn btn-group" uib-dropdown>
+            <button type="button"
+                    style="border-radius:0px"
+                    id="substrate-button"
+                    class="btn btn-default"
+                    uib-dropdown-toggle>{{ctrl.substrateMap[ctrl.substrate] }}
+                    <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu uib-dropdown-menu"
+                ng-model="ctrl.substrate"
+                role="menu"
+                aria-labelledby="substrate-button">
+              <li class="menuitem" ng-click="ctrl.substrate='fabric'" href="#">Fabric</li>
+              <li class="menuitem" ng-click="ctrl.substrate='wallpaper'" href="#">Wallpaper</li>
+              <li class="menuitem" ng-click="ctrl.substrate='gift_wrap'"value="gift_wrap" href="#">Gift wrap</li>
+              <li class="menuitem" ng-click="ctrl.substrate='any'" value="any" href="#">Any</li>
+            </ul>
+          </div>
+          <div class="input-group-btn">
+            <button type="button"
+                    id="search-button"
+                    class="btn btn-default"
+                    ng-click="ctrl.search()">Search!
+            </button>
+          </div>
+        </div>
+        <hr ng-if="ctrl.searchResults.length">
+        <div class="row" ng-if="ctrl.searchResults.length">
+          <div class="col-sm-6 col-md-3" ng-repeat="result in ctrl.searchResults | orderBy:'rank'">
+            <div class="card">
+              <div class="thumbnail spoonflower">
+                <span class="glyphicon glyphicon-fullscreen blackboard"></span>
+                <img ng-src="{{result.thumbnail_url}}" alt="{{ result.name }}" ng-click="ctrl.setBackground(result.thumbnail_url)"/><br>
+              </div>
+              <div class="caption">
+                <h5>
+                  <a ng-href="http://www.spoonflower.com/{{ctrl.substrate === 'any' ? 'fabric' : ctrl.substrate}}/{{result.slug}}" target="_blank"> {{ result.name | limitTo: 30}} {{result.name.length > 30 ? "..." : ""}}</a>
+                </h5>
+                <small>{{result.short_description | limitTo: 60}} {{result.short_description.length > 60 ? "..." : ""}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="ctrl.searchResults.length >= ctrl.limit"
+          uib-pagination total-items="ctrl.limit"
+          ng-model="ctrl.currentPage"
+          ng-change="ctrl.getMoreResults()">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
