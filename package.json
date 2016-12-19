@@ -6,8 +6,8 @@
   },
   "scripts": {
     "test": "gulp test",
-    "build": "gulp",
-    "start": "gulp serve:dist"
+    "start": "node app",
+    "postinstall": "gulp serve:dist"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
