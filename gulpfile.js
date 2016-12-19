@@ -27,3 +27,7 @@ fs.readdirSync('./gulp').filter(function(file) {
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
 });
+
+gulp.task("heroku:production", function(){
+    console.log('hello'); // the task does not need to do anything.
+});
