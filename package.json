@@ -7,7 +7,7 @@
   "scripts": {
     "test": "gulp test",
     "start": "node app.js",
-    "heroku-postbuild": "gulp default"
+    "heroku-postbuild": "gulp serve:dist"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
