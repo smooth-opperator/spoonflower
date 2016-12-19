@@ -44,7 +44,6 @@ export class SpoonflowerController {
     return this._SpoonflowerService.searchDesigns({ q: this.searchQ, limit: this.limit, offset: this.currentPage, substrate: this.substrate })
     .then(response => {
       this.searchResults = response.results[0].results;
-      console.log(response.results[0].results, response.results[0].results.length, 'results');
     }).catch(err => console.log(err));
   }
 
